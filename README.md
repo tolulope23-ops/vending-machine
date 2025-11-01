@@ -12,7 +12,7 @@ It allows users to view and purchase products, while admins can manage inventory
 - Select products by click or button 
 - Handles out-of-stock messages and input validation
 - See total cost and make “purchase” interactions
-- Initialise payment mode by clicking the “Checkout” button
+- Initialise payment mode by clicking the **Checkout** button
 
 ### 🧑‍💼 Admin Features
 - Add new products (slot, name, price, quantity, category, image)  
@@ -59,3 +59,4 @@ Backend Developer | Tech4Dev Trainee |  Passionate about creating intuitive web 
 🔗 [LinkedIn](https://linkedin.com/in/raedev)
 
 🐙 [GitHub](https://github.com/tolulope23-ops)
+
