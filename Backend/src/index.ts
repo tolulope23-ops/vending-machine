@@ -147,7 +147,7 @@ const displayProducts = () => {
             selectedProductQty = 1;
             msg = `
                 Slot: ${slot.slotCode} <br> 
-                Name: ${slot.product.name} <br>
+                Product: ${slot.product.name} <br>
                 Price: ${formatCurrency(slot.product.price)}
             `;
             updateDisplay(msg);
