@@ -1,5 +1,4 @@
 import { defaultStock } from "./defaultVending.js";
-localStorage.clear();
 // DOM Elements
 const displaytxt = document.getElementById("display-text");
 const displayGrid = document.getElementById("vending-display-grid");
@@ -112,7 +111,7 @@ const displayProducts = () => {
         productCard.innerHTML = `
             <img src="${slot.product.imageURL}" alt=${slot.product.name}>
             <p>${formatCurrency(slot.product.price)}</p>
-            <h6> ${slot.product.name}<h6>
+            <small> Slot ${slot.slotCode}<small>
         `;
         productCard.addEventListener("click", () => {
             slotSelected = slot;

@@ -225,12 +225,12 @@ body {
 }
 
 
-/* .product-card small {
+.product-card small {
   margin: 0;
   padding: 0;
   color: #777;
   font-size: 9px;
-} */
+}
 
       /* ----- Dispensing Container -----*/
 #dispense-tray {

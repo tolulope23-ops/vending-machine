@@ -145,7 +145,7 @@ const displayProducts = () => {
         productCard.innerHTML = `
             <img src="${slot.product.imageURL}" alt=${slot.product.name}>
             <p>${ formatCurrency(slot.product.price)}</p>
-            <h6> ${slot.product.name}<h6>
+            <small> Slot ${slot.slotCode}<small>
         `;
 
         productCard.addEventListener("click", () => {
