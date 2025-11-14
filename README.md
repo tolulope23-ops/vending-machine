@@ -1,4 +1,4 @@
-﻿# 🧃 Vending Machine
+﻿## Vending Machine
 
 ## Overview  
 The **Vending Machine** is a web-based application that simulates a real-world vending experience.  
@@ -59,4 +59,5 @@ Backend Developer | Tech4Dev Trainee |  Passionate about creating intuitive web 
 🔗 [LinkedIn](https://linkedin.com/in/raedev)
 
 🐙 [GitHub](https://github.com/tolulope23-ops)
+
 
