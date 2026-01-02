@@ -1,51 +1,36 @@
-export enum category{
-    DRINKS = "DRINKS",
-    SNACKS = "SNACKS",
-    CANDY = "CANDY",
-    CHIPS = "CHIPS",
-    BUISCUIT = "BUISCUIT"
+export enum TransactionStatus {
+  SUCCESS = "SUCCESS",
+  FAILED = "FAILED"
 }
-
-
-export enum TransactionStatus{
-    SUCCESS = "SUCCESS",
-    FAILED = "FAILED"
-}
-
-export interface image{
-  id: bigint
-}
-
 
 export interface Product {
   id: bigint;
   name: string;
   price: number;
-  categoryId: string;
-  imageUrl: string;
+  categoryId: bigint;
+  imageName: string;
+  serialNumber?: string;
   createdAt: Date;
   updatedAt: Date;
 }
-
 
 export interface Category {
   id: bigint;
-  name: string;
-  description?: string;
+  c_name: string;
+  c_description?: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
-
 export interface MachineInventory {
   id: bigint;
-  vendingMachineId: string;
-  productId: string;
+  vendingMachineId: bigint;
+  productId: bigint;
   quantity: number;
   slotCode: string;
+  createdAt: Date;
   updatedAt: Date;
 }
-
 
 export interface VendingMachine {
   id: bigint;
@@ -53,15 +38,16 @@ export interface VendingMachine {
   location?: string;
   isActive: boolean;
   createdAt: Date;
+  updatedAt: Date;
 }
-
 
 export interface Transaction {
   id: bigint;
   vendingMachineId: bigint;
   productId: bigint;
   quantity: number;
-  amountPaid: number;
+  amount: number;
   status: TransactionStatus;
   createdAt: Date;
+  updatedAt: Date;
 }
