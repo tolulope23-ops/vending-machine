@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "dist"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mysql2": "^3.16.0"
+    "mysql2": "^3.16.0",
+    "zod": "^4.3.4"
   }
 }
