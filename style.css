@@ -67,9 +67,9 @@ body {
 
 
 .hidden {
-  /* display: none; */
-  opacity: 0;
-  pointer-events: none;
+  display: none;
+  /* opacity: 0; */
+  /* pointer-events: none; */
 }
 
 
@@ -147,6 +147,7 @@ body {
 #admin{
   display: none;
 }
+
           /* ----- Vending Machine -----*/
 #vending-out-div {
   border: 2px solid rgb(148, 143, 143);

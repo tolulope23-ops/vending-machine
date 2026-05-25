@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "CommonJS",
+    "module": "ES6",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
+  "include": ["src", "../index.ts"],
   "exclude": ["node_modules", "dist"]
 }
