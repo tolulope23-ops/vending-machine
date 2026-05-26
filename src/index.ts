@@ -129,7 +129,7 @@ const displayProducts = () => {
         productCard.classList.add("product-card");
 
         //Get the slotcode(A2) at index (1) -> 2 and convert it into a number
-        const columnNumber = parseInt(slot.slotCode.slice(1));
+        const columnNumber = parseInt(slot.slotCode[1]);
 
         const rowLetter = slot.slotCode[0];
 

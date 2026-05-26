@@ -101,7 +101,7 @@ const displayProducts = () => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
         //Get the slotcode(A2) at index (1) -> 2 and convert it into a number
-        const columnNumber = parseInt(slot.slotCode.slice(1));
+        const columnNumber = parseInt(slot.slotCode[1]);
         const rowLetter = slot.slotCode[0];
         // The -64 part is a manual offset to make the alphabet start from 1 instead of its ASCII value of 65
         const rowNumber = (rowLetter.charCodeAt(0) - 64);
