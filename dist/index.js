@@ -31,19 +31,38 @@ let selectedProductQty = 1;
 let total = 0;
 let isCheckoutStage = false;
 let userPaysInput = "";
+const generateProductId = () => {
+    const letters = Math.random().toString(36).substring(2, 5).toUpperCase();
+    const numbers = Math.floor(100 + Math.random() * 900);
+    return `${letters}-${numbers}`;
+};
+const convertImageToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+    });
+};
 //Event listener to Save product by Admin to newProductSlot object then push to vendingStock object or update if the slotcode exist
-saveBtn.addEventListener("click", () => {
+saveBtn.addEventListener("click", async () => {
     const slotCode = document.getElementById("slotCode").value.trim();
-    const p_id = document.getElementById("p_id").value.trim();
+    const p_id = generateProductId();
     const name = document.getElementById("p_name").value.trim();
     const price = Number(document.getElementById("price").value);
     const quantity = Number(document.getElementById("quantity").value);
-    const imageURL = document.getElementById("imageURL").value.trim();
+    const imageFileInput = document.getElementById("imageURL");
+    const imageFile = imageFileInput.files?.[0];
     const category = document.getElementById("category").value.trim();
     const size = document.getElementById("size").value.trim();
-    if ((!slotCode && !price && !quantity) && (!name || !category)) {
-        alert("Please fill in all fields before saving.");
+    if (!slotCode || !price || !quantity || !imageFile) {
+        alert("Slot Code, Price, imageFile and Quantity are required.");
         return;
+    }
+    ;
+    let imageURL = "";
+    if (imageFile) {
+        imageURL = await convertImageToBase64(imageFile);
     }
     ;
     const existingProduct = vendingStock.slots.find((slot) => slot.slotCode === slotCode);
@@ -338,9 +357,27 @@ const adminDiv = document.getElementById("admin");
 const vendingDiv = document.getElementById("vending");
 //Ensures elements exist before attaching event listeners
 if (menuIcon && menuList && adminBtn && vendingBtn && adminDiv && vendingDiv) {
+    // Show Admin dashboard
+    adminBtn.addEventListener("click", () => {
+        adminDiv.style.display = "block";
+        vendingDiv.style.display = "none";
+        menuList.classList.add("hidden");
+    });
+    // Show Vending dashboard
+    vendingBtn.addEventListener("click", () => {
+        vendingDiv.style.display = "block";
+        adminDiv.style.display = "none";
+        menuList.classList.add("hidden");
+    });
+    // Hide menu if user clicks anywhere outside it
     // Toggle menu visibility
-    menuIcon.addEventListener("click", () => {
+    menuIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
         menuList.classList.toggle("hidden");
+    });
+    // Prevent menu clicks from bubbling
+    menuList.addEventListener("click", (e) => {
+        e.stopPropagation();
     });
     // Show Admin dashboard
     adminBtn.addEventListener("click", () => {
@@ -355,11 +392,8 @@ if (menuIcon && menuList && adminBtn && vendingBtn && adminDiv && vendingDiv) {
         menuList.classList.add("hidden");
     });
     // Hide menu if user clicks anywhere outside it
-    document.addEventListener("click", (e) => {
-        const target = e.target;
-        if (!menuIcon.contains(target) && !menuList.contains(target)) {
-            menuList.classList.add("hidden");
-        }
+    document.addEventListener("click", () => {
+        menuList.classList.add("hidden");
     });
 }
 ;

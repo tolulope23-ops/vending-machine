@@ -13,7 +13,6 @@ const addProductform = document.getElementById("addProductform") as HTMLFormElem
 //Admin button stocking up products.
 const saveBtn = document.getElementById("saveToStock") as HTMLButtonElement;
 
-
 //Function to saves default products, new or updated product by the admin to local storage.
 const saveToStock = () => {
     localStorage.setItem("vendingStock", JSON.stringify(vendingStock));
@@ -47,22 +46,47 @@ let total = 0;
 let isCheckoutStage = false;  
 let userPaysInput = ""; 
 
+const generateProductId = (): string => {
+    const letters = Math.random().toString(36).substring(2, 5).toUpperCase();
+    const numbers = Math.floor(100 + Math.random() * 900);
 
+    return `${letters}-${numbers}`;
+};
+
+const convertImageToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => resolve(reader.result as string);
+
+        reader.onerror = (error) => reject(error);
+    });
+};
 
 //Event listener to Save product by Admin to newProductSlot object then push to vendingStock object or update if the slotcode exist
-saveBtn.addEventListener("click", () =>{
+saveBtn.addEventListener("click", async () => {
     const slotCode = (document.getElementById("slotCode") as HTMLInputElement).value.trim();
-    const p_id = (document.getElementById("p_id") as HTMLInputElement).value.trim();
+    const p_id = generateProductId();
     const name = (document.getElementById("p_name") as HTMLInputElement).value.trim();
     const price = Number((document.getElementById("price") as HTMLInputElement).value);
+
     const quantity = Number((document.getElementById("quantity") as HTMLInputElement).value);
-    const imageURL = (document.getElementById("imageURL") as HTMLInputElement).value.trim();
+    const imageFileInput = document.getElementById("imageURL") as HTMLInputElement;
+    const imageFile = imageFileInput.files?.[0];
     const category = (document.getElementById("category") as HTMLInputElement).value.trim();
     const size = (document.getElementById("size") as HTMLInputElement).value.trim();
 
-    if ((!slotCode && !price && !quantity) && ( !name || !category)) {
-        alert("Please fill in all fields before saving.");
+    if(!slotCode || !price || !quantity || !imageFile) {
+        alert("Slot Code, Price, imageFile and Quantity are required.");
         return;
+    };
+
+    let imageURL = "";
+
+    if (imageFile) {
+        imageURL = await convertImageToBase64(imageFile);
     };
 
     const existingProduct = vendingStock.slots.find((slot: any) => slot.slotCode === slotCode);
@@ -395,11 +419,6 @@ const vendingDiv = document.getElementById("vending") as HTMLDivElement;
 
 //Ensures elements exist before attaching event listeners
 if (menuIcon && menuList && adminBtn && vendingBtn && adminDiv && vendingDiv) {
-  
-  // Toggle menu visibility
-  menuIcon.addEventListener("click", () => {
-    menuList.classList.toggle("hidden");
-  });
 
   // Show Admin dashboard
   adminBtn.addEventListener("click", () => {
@@ -416,10 +435,34 @@ if (menuIcon && menuList && adminBtn && vendingBtn && adminDiv && vendingDiv) {
   });
 
   // Hide menu if user clicks anywhere outside it
-  document.addEventListener("click", (e: MouseEvent) => {
-    const target = e.target as Node;
-    if (!menuIcon.contains(target) && !menuList.contains(target)) {
-      menuList.classList.add("hidden");
-    }
-  });
+
+  // Toggle menu visibility
+    menuIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuList.classList.toggle("hidden");
+    });
+
+    // Prevent menu clicks from bubbling
+    menuList.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+
+     // Show Admin dashboard
+    adminBtn.addEventListener("click", () => {
+        adminDiv.style.display = "block";
+        vendingDiv.style.display = "none";
+        menuList.classList.add("hidden");
+    });
+
+    // Show Vending dashboard
+    vendingBtn.addEventListener("click", () => {
+        vendingDiv.style.display = "block";
+        adminDiv.style.display = "none";
+        menuList.classList.add("hidden");
+    });
+
+    // Hide menu if user clicks anywhere outside it
+    document.addEventListener("click", () => {
+        menuList.classList.add("hidden");
+    });
 };

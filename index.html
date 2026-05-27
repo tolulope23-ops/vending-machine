@@ -35,42 +35,42 @@
                 <form id="addProductform">
 
                     <label for="slotCode">SlotCode:</label>
-                    <input type="text" id="slotCode" placeholder="e.g. A1">
-                    </div>
-
-                    <div class="input-group-row">
-                    <label for="p_id">Product ID:</label>
-                    <input type="text" id="p_id" placeholder="e.g. COKE-500">
+                    <input type="text" id="slotCode" placeholder="A1">
                     </div>
 
                     <div class="input-group-row">
                     <label for="p_name">Name:</label>
-                    <input type="text" id="p_name" placeholder="e.g. Coca-Cola">
+                    <input type="text" id="p_name" placeholder="Coca-Cola">
                     </div>
 
                     <div class="input-group-row">
                     <label for="price">Price (₦):</label>
-                    <input type="number" id="price" placeholder="e.g. 400" >
+                    <input type="number" id="price" placeholder="₦0.00" >
                     </div>
 
                     <div class="input-group-row">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" placeholder="e.g. 5" >
+                    <input type="number" id="quantity" placeholder="5" >
                     </div>
 
                     <div class="input-group-row">
-                    <label for="imageURL">Image URL:</label>
-                    <input type="text" id="imageURL" placeholder="Product image">
+                    <label for="imageURL">Image:</label>
+                    <input type="file" id="imageURL" accept="image/*">
                     </div>
 
                     <div class="input-group-row">
-                    <label for="category">Category:</label>
-                    <input type="text" id="category" placeholder="e.g. Drink">
+                        <label for="category">Category:</label>
+                        <select id="category">
+                            <option value="Drink">Drink</option>
+                            <option value="Snack">Snack</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Candy">Candy</option>
+                        </select>
                     </div>
 
                     <div class="input-group-row">
                     <label for="size">Size:</label>
-                    <input type="text" id="size" placeholder="e.g. 500ml">
+                    <input type="text" id="size" placeholder="500ml">
                     </div>
                 </form>
 
