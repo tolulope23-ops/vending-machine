@@ -1,24 +1,24 @@
 ﻿## Vending Machine
 
 ## Overview  
-The **Vending Machine** is a web-based application that simulates a real-world vending experience.  
-It allows users to view and purchase products, while admins can manage inventory directly from the dashboard.
+A fully interactive web-based **Vending Machine** application that simulates a real-world vending experience. The system allows users to browse products, select items using a keypad interface, increase quantities, complete simulated payments, and receive dispensed products visually on-screen.
+
+The application also includes an Admin Dashboard where products can be added, updated, and managed dynamically using browser local storage without requiring a backend or database.
 
 ##  Features  
 
-### 🧍 User Features
-- Smooth display updates with a digital vending feel 
-- View available products with name, price, and image
-- Select products by click or button 
-- Handles out-of-stock messages and input validation
-- See total cost and make “purchase” interactions
-- Initialise payment mode by clicking the **Checkout** button
-
-### 🧑‍💼 Admin Features
-- Add new products (slot, name, price, quantity, category, image)  
-- Automatically saves stock in `localStorage`  
-- Updates reflect instantly on the vending grid  
-- Clear and intuitive UI for managing inventory 
+###  Key Features
+Interactive vending machine UI with realistic structure and layout
+Product selection using keypad slot codes (e.g. A1, B2)
+Checkout and payment simulation flow
+Quantity increment support for selected products
+Dynamic product rendering from localStorage
+Admin inventory management system
+Image upload support for vending products
+Category-based product organization
+Product dispense tray animation
+Persistent storage using browser localStorage
+Responsive and modern UI design
 
 ## 🧠 Tech Stack
 - **TypeScript (ES6)** – Core app logic and vending machine flow  
@@ -28,7 +28,7 @@ It allows users to view and purchase products, while admins can manage inventory
 
 ## 💾 How to Run Locally  
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/tolulope23-ops/vending-machine.git
 cd vending-machine
@@ -43,21 +43,10 @@ npm install
 npx tsc
 ```
 
-## 💡 Future Improvements
-- Add authentication for admin access  
-- Integrate a real payment gateway (Paystack or Stripe)  
-- Implement backend with a database (Node.js + PostgreSQL)
-
 ## 📸 Preview
-![Vending Machine Screenshot](./Backend/images/Preview.png)
+![Vending Machine Screenshot](./vending-preview.png)
 
 
-## 👩‍💻 Author
-**Racheal Adeyemi**  
-Backend Developer | Tech4Dev Trainee |  Passionate about creating intuitive web tools while building secure and scalable APIs that solve real-world problems.
-
-🔗 [LinkedIn](https://linkedin.com/in/raedev)
-
-🐙 [GitHub](https://github.com/tolulope23-ops)
+[GitHub](https://github.com/tolulope23-ops)
 
 
