@@ -176,7 +176,7 @@ const displayProducts = () => {
                 alert('Please complete current payment first...');
                 return;
             };
-            
+
             slotSelected = slot;
 
             selectedProductQty = 1;
