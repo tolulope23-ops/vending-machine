@@ -134,8 +134,12 @@ const displayProducts = () => {
             <small> Slot ${slot.slotCode}<small>
         `;
         productCard.addEventListener("click", () => {
+            if (isCheckoutStage) {
+                alert('Please complete current payment first...');
+                return;
+            }
+            ;
             slotSelected = slot;
-            console.log(slotSelected);
             selectedProductQty = 1;
             msg = `
                 Slot: ${slot.slotCode} <br> 
@@ -314,6 +318,7 @@ const processPayment = () => {
             setTimeout(() => {
                 tray.removeChild(img);
                 updateDisplay("Select a product...");
+                enableButton();
             }, 5000);
         }
         ;

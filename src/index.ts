@@ -172,8 +172,13 @@ const displayProducts = () => {
         `;
 
         productCard.addEventListener("click", () => {
+            if(isCheckoutStage){
+                alert('Please complete current payment first...');
+                return;
+            };
+            
             slotSelected = slot;
-            console.log(slotSelected);
+
             selectedProductQty = 1;
             msg = `
                 Slot: ${slot.slotCode} <br> 
@@ -366,6 +371,7 @@ const processPayment = () => {
             setTimeout(() => {
                 tray.removeChild(img);
                 updateDisplay("Select a product...");
+                enableButton()
             }, 5000);
         };
     }
@@ -395,13 +401,12 @@ const refreshProductDisplay = () => {
 //Function to diable alphabets button, not to allow any product to be chosen after payment is being processed.
 const disableButton = () =>{
     alphaButtons.forEach(btn =>{btn.disabled = true;})
-}
+};
 
 //Function to enable alphabets button
 const enableButton = () =>{
     alphaButtons.forEach(btn =>{btn.disabled = false;})
-}
-
+};
     
 displayProducts();
 keyPadInput();
